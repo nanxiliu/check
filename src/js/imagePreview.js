@@ -32,14 +32,15 @@ function main() {
 
         $("#imgInp").change(function(){
             readURL(this);
-            $(document).ready(function (e) {
-                $('#img-upload').click(function (e) { //Offset mouse Position
-                    var posX = $(this).offset().left,
-                        posY = $(this).offset().top;
-                    alert((e.pageX - posX) + ' , ' + (e.pageY - posY));
-                });
-            });
-        }); 	
+        }); 
+        
+        $(document).ready(function (e) {
+            $('#img-upload').click(function (e) { //Offset mouse Position
+                var posX = $(this).offset().left,
+                    posY = $(this).offset().top;
+                alert((e.pageX - posX) + ' , ' + (e.pageY - posY));
+            })
+        });
     });
 };
 
