@@ -1,96 +1,53 @@
-import nltk
 import re
-# nltk.download('punkt')
-# nltk.download('averaged_perceptron_tagger')
-# nltk.download('maxent_ne_chunker')
-# nltk.download('words')
-# nltk.download('wordnet')
-from nameparser.parser import HumanName
-from nltk.corpus import wordnet
+import string
 
-person_list = []
-person_names=person_list
-def get_human_names(text):
-    tokens = nltk.tokenize.word_tokenize(text)
-    pos = nltk.pos_tag(tokens)
-    sentt = nltk.ne_chunk(pos, binary = False)
-
-    person = []
-    name = ""
-    for subtree in sentt.subtrees(filter=lambda t: t.label() == 'PERSON'):
-        for leaf in subtree.leaves():
-            person.append(leaf[0])
-        if len(person) > 1: #avoid grabbing lone surnames
-            for part in person:
-                name += part + ' '
-            if name[:-1] not in person_list:
-                person_list.append(name[:-1])
-            name = ''
-        person = []
-    print (person_list)
-
-# text = """
-
-# Some economists have responded positively to Bitcoin, including 
-# Francois R. Velde, senior economist of the Federal Reserve in Chicago 
-# who described it as "an elegant solution to the problem of creating a 
-# digital currency." In November 2013 Richard Branson announced that 
-# Virgin Galactic would accept Bitcoin as payment, saying that he had invested 
-# in Bitcoin and found it "fascinating how a whole new global currency 
-# has been created", encouraging others to also invest in Bitcoin.
-# Other economists commenting on Bitcoin have been critical. 
-# Economist Paul Krugman has suggested that the structure of the currency 
-# incentivizes hoarding and that its value derives from the expectation that 
-# others will accept it as payment. Economist Larry Summers has expressed 
-# a "wait and see" attitude when it comes to Bitcoin. Nick Colas, a market 
-# strategist for ConvergEx Group, has remarked on the effect of increasing 
-# use of Bitcoin and its restricted supply, noting, "When incremental 
-# adoption meets relatively fixed supply, it should be no surprise that 
-# prices go up. And that’s exactly what is happening to BTC prices."
-# """
 
 ballot_file = open("ballot_text.txt","r")
 text = ballot_file.read()
-# text = "Anna ate Addie and Amanda Nanxi hurt Lillian Bu."
-# print(text)
-# string = "The following words are ALL CAPS. The following word is in CAPS."
 count = text.find("Shall")
-print("count",count)
-cut = text[count+1:]
-# print("cut",cut)
-matches = re.findall(r"([A-Z]+\s?[A-Z]+[^a-z0-9\W])", cut, re.DOTALL)
-no_list = ["YES","STATE","GOVERNOR","YES\nONO",'LIEUTENANT\nGOVERNOR','SECRETARY\nOF','SCHOOL','STATE\nSUPERINTENDENT', 'F\nPUBLIC', 'INSTRUCTION', 'CONTROLLER'
-,'CFO','WRITE', 'IN\nTREASURER','PLACER\nCOUNTY', 'BOARD\nOF', 'CPA','EDUCATION', 'GOVERNING\nBOARD', 'MEMBER\nTRUSTEE', 'AREA','IIIIIIIIIIIIIIIIIIIIII\nIIIIIIIIIIIIIIIIIIIIIIIIIIIII']
-names_list = []
-ratchet = []
-for i in matches:
-    print(i)
-    if i[0] == "O":
-        i = i[1:]
-    if i not in no_list:
-        if i.find("\n") != -1:
-            full = i.split("\n")
-            for chunk in full:
-                if chunk !="":
-                    names_list.append(chunk)
-            # ratchet.append(full)
+cutwords = text[count+1:]
+new_list = cutwords.split()
+name_list = []
+for i in range(len(new_list)): 
+    cap = True
+    for char in new_list[i]:
+        if char not in string.ascii_uppercase:
+            cap = False
+    if cap:
+        if (i+1) < len(new_list) and new_list[i+1] == ".":
+                name_list.append(new_list[i]+".")
         else:
-            names_list.append(i)
-print("names_list",names_list)
-print(len(names_list))
-print("ratchet", ratchet)
+            name_list.append(new_list[i])
 
-# print(matches)
+no_list = ["YES",'STATE','NO','LIEUTENANT', 'GOVERNOR','SECRETARY', 'OF', 'STATE','O','SCHOOL'
+,'SUPERINTENDENT','PUBLIC', 'INSTRUCTION', 'CONTROLLER','CPA','IIIIIIIIIIIIIIIIIIIIII', 'IIIIIIIIIIIIIIIIIIIIIIIIIIIII'
+,'WRITE', 'IN', 'TREASURER', 'PLACER', 'COUNTY','EDUCATION', 'GOVERNING', 'BOARD', 'MEMBER', 'TRUSTEE', 'AREA',"CFO"]
 
+junk_free = []
+for word in name_list:
+    if word[0] == "O":
+        word = word[1:]
+    if word not in no_list:
+        if len(word) >1:
+            junk_free.append(word)
 
-# names = get_human_names(text)
-# print(names)
-# for person in person_list:
-#     person_split = person.split(" ")
-#     for name in person_split:
-#         if wordnet.synsets(name):
-#             if(name in person):
-#                 person_names.remove(person)
-#                 break
+final = []
+x= 0
+while x<len(junk_free):
+    if x+1 < len(junk_free):
+        if junk_free[x+1].find(".") != -1:
+            first = junk_free[x][0]+junk_free[x][1:].lower()
+            last = junk_free[x+2][0]+junk_free[x+2][1:].lower()
+            name = first+" "+junk_free[x+1]+" "+last
+            final.append(name)
+            x+=3
+        else:
+            first = junk_free[x][0]+junk_free[x][1:].lower()
+            last = junk_free[x+1][0]+junk_free[x+1][1:].lower()
+            name = first+" "+last
+            final.append(name)
+            x+=2
 
-# print(person_names)
+print(final)
+
+        
