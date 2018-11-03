@@ -13,6 +13,8 @@ def detect_document(path):
 
     response = client.document_text_detection(image=image)
 
+    f = open('ballot_text.txt', 'w')
+
     for page in response.full_text_annotation.pages:
         for block in page.blocks:
             print('\nBlock confidence: {}\n'.format(block.confidence))
@@ -25,12 +27,14 @@ def detect_document(path):
                     word_text = ''.join([
                         symbol.text for symbol in word.symbols
                     ])
+                    f.write(word_text+ '\n')
                     print('Word text: {} (confidence: {})'.format(
                         word_text, word.confidence))
 
                     for symbol in word.symbols:
                         print('\tSymbol: {} (confidence: {})'.format(
                             symbol.text, symbol.confidence))
+    f.close()
 
 
 detect_document('/Users/lillianbu/Documents/Cal_hacks/check/sampleBallot.png')
