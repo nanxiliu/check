@@ -25,38 +25,17 @@
 
     <div class="body-wrap container text-center">
         <div class="row">
-            <h1 id="title-check">Check <img id="title-check-img" width=36 src="../public/img/favicon.png"></h1>
-        </div>
-        <div class="row">
-            <p>Learn about the candidates on your voter ballot!</p>
-        </div>
-
-        <h3>Enter your zip code:</h3>
-        <div class="row">
-            <input class="form-control" type="text"id="edit-zip-code">
-        </div>
-        <div class="row">
-            <div class="col">
-                <h3>Upload your voter ballot:</h3>
-                <div class="form-group">
-                    <div class="input-group">
-                        <span class="input-group-btn">
-                            <span class="btn btn-default btn-file">
-                                Browse… <input type="file" id="imgInp">
-                            </span>
-                        </span>
-                        <input type="text" class="form-control" readonly>
-                    </div>
-                    <img id="img-upload"/>
-                    <br></br>
-                </div>
+            <div class="col-sm-6">
+                <div id="A"><img id="sample-ballot" src="../sampleBallot.png" class="img-responsive"></div>
+            </div>
+            <div id="results-col" class="col-sm-6">
+                <h3>Results:</h3>
             </div>
         </div>
-        </div>
-        <button type="button" class="btn center-block"><a href="results.html">Submit</a></button>
+        <br></br>
     </div>
     <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="./js/imagePreview.js"></script>
+    <script src="./js/readCSV.js"></script>
     </body>
 </html>

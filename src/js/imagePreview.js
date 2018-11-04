@@ -27,6 +27,8 @@ function main() {
                 }
                 
                 reader.readAsDataURL(input.files[0]);
+                console.log(reader);
+                console.log($('#img-upload').attr('src', e.target.result));
             }
         }
 
@@ -34,6 +36,7 @@ function main() {
             readURL(this);
         }); 
         
+        // Click and alert: http://jsfiddle.net/AMsK9/
         $(document).ready(function (e) {
             $('#img-upload').click(function (e) { //Offset mouse Position
                 var posX = $(this).offset().left,
