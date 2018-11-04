@@ -9,17 +9,29 @@ function main() {
     });
 }; 
 
-function processData(allText) {
-    let allTextLines = allText.split(/\r\n|\n/);
-    allTextLines.attr("result-text");
-    console.log(typeof allTextLines)
-    let resultText = $('result-text').text().slice(22);
+function processData(csv) {
+    // let allTextLines = allText.split(/\r\n|\n/);
+    var lines=csv.split("\n");
+    var result = [];
+    var headers=lines[0].split(",");
+
+    for(var i=1;i<lines.length;i++){
+        var obj = {};
+        var currentline=lines[i].split(",");
+
+        for(var j=0;j<headers.length;j++){
+            obj[headers[j]] = currentline[j];
+        }
+        result.push(obj);
+    }
+    let json = JSON.stringify(result); 
     
     let resultsDiv = document.querySelector("#results-col");
     let point1 = document.createElement("p");
-    let text = document.createTextNode(resultText);
+    let text = document.createTextNode(json);
     point1.append(text);
     resultsDiv.append(point1);
+
 };
 
 window.onload = function() {
