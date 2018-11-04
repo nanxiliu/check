@@ -1,5 +1,5 @@
 :root {
-    --main-color: #00b0f0;
+    --main-color: rgb(0, 151, 167);
 }
 
 /* Fonts */
@@ -31,7 +31,7 @@ h1, h2, h3, .navbar ul {
 
 .navbar li a {
     display: block;
-    color: black;;
+    color: white;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
