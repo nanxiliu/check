@@ -89,7 +89,7 @@ li a:hover:not(.active) {
     cursor: pointer;
 }
 
-#submit-btn {
+#submit-btn, .results-btn {
     border: 1px solid #111 !important;
 }
 
@@ -97,7 +97,8 @@ li a:hover:not(.active) {
     color: #FFF !important;
 }
 
-#submit-btn:hover {
+#submit-btn:hover, .results-btn:hover {
+    color: #FFF !important;
     background: #00b0f0bd;
 }
 
@@ -105,3 +106,6 @@ li a:hover:not(.active) {
     text-decoration: none !important;
 }
 
+.results-btn {
+    margin-bottom: 10px !important;
+}

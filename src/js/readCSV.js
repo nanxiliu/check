@@ -10,7 +10,7 @@ function main() {
 }; 
 
 function processData(csv) {
-    // let allTextLines = allText.split(/\r\n|\n/);
+    // CSV to JSON
     var lines=csv.split("\n");
     var result = [];
     var headers=lines[0].split(",");
@@ -26,30 +26,26 @@ function processData(csv) {
     }
     let resultsDiv = document.querySelector("#results-col");
 
-    for(var i=0; i<result.length; i++){
-        let para1 = document.createElement("button");
-        para1.className = "btn btn" + i.toString();
+    // Iterate through every candidate in the CSV file, putting their name as a button and priorities toggleable
+    for(var i=0; i<result.length-1; i++){
+        let button1 = document.createElement("button");
+        button1.className = "results-btn btn btn" + i.toString();
         let para2 = document.createElement("p");
         para2.className = "para" + i.toString();
+        para2.style.display = "none";
+        let br = document.createElement("br");
         let candidateText = document.createTextNode(result[i]["Candidates"]);
         let prioritiesText = document.createTextNode(result[i]["Priorities"]);
-        para1.append(candidateText);
-        resultsDiv.append(para1);
+        button1.append(candidateText);
+        resultsDiv.append(button1);
+        resultsDiv.append(br);
         para2.append(prioritiesText);
         resultsDiv.append(para2);
     }
 
-    $(".btn0").click(function(){
-        var x = document.querySelector(".para0");
-        if (x.style.display === "none") {
-            x.style.display = "block";
-        } else {
-            x.style.display = "none";
-        }
-    });
-
-    $(".btn1").click(function(){
-        var x = document.querySelector(".para1");
+    // Toggle showing a candidate's priorities with a click
+    $(".btn").click(function(){
+        var x = this.nextElementSibling.nextElementSibling;
         if (x.style.display === "none") {
             x.style.display = "block";
         } else {
