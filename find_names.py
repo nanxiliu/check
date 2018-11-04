@@ -49,7 +49,7 @@ def find_names(text):
                 x+=2
 
     new_string = ",".join(final)
-    x = open("names.txt","w")
+    x = open("nameinput.txt","w")
     x.write(new_string)
     x.close()
     return x
