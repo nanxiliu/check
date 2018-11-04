@@ -45,6 +45,22 @@ li a:hover:not(.active) {
     background-color: var(--main-color);
 }
 
+/* Footer */
+
+.footer {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 0rem;
+    text-align: center;
+    z-index:-1;
+}
+
+.footer img {
+    max-width: 100%;
+}
+
 /* Title */
 
 #title-check {
