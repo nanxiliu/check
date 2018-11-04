@@ -39,4 +39,4 @@ def detect_document(path):
 
 
 detect_document('/Users/lillianbu/Documents/Cal_hacks/check/sampleBallot.png')
-find_names('ballot_text.txt')
+names = find_names('ballot_text.txt')
