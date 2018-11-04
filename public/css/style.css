@@ -1,5 +1,5 @@
 :root {
-    --main-color: #00b0f0;
+    --main-color: rgb(0, 151, 167);
 }
 
 /* Fonts */
@@ -31,7 +31,7 @@ h1, h2, h3, .navbar ul {
 
 .navbar li a {
     display: block;
-    color: black;;
+    color: white;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
@@ -108,4 +108,19 @@ li a:hover:not(.active) {
 
 .results-btn {
     margin-bottom: 10px !important;
+}
+/* Footer */
+
+.footer {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 0rem;
+    text-align: center;
+    z-index:-1;
+}
+
+.footer img {
+    max-width: 100%;
 }
