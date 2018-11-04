@@ -37,4 +37,3 @@ def detect_document(path):
     f.close()
 
 
-detect_document('/Users/lillianbu/Documents/Cal_hacks/check/sampleBallot.png')
