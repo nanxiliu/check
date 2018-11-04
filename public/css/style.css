@@ -85,9 +85,11 @@ li a:hover:not(.active) {
     display: block;
 }
 
-#img-upload, #sample-ballot {
+#sample-ballot {
     cursor: pointer;
 }
+
+/* Button coloring */
 
 #submit-btn, .results-btn {
     border: 1px solid #111 !important;
@@ -109,6 +111,7 @@ li a:hover:not(.active) {
 .results-btn {
     margin-bottom: 10px !important;
 }
+
 /* Footer */
 
 .footer {
@@ -123,4 +126,32 @@ li a:hover:not(.active) {
 
 .footer img {
     max-width: 100%;
+}
+
+/* Padding */
+
+.input-row {
+    margin-left: 30% !important;
+    margin-right: 30% !important;
+}
+
+@media (max-width: 900px) {
+    .input-row {
+        margin-left: 20% !important;
+        margin-right: 20% !important;
+    }
+}
+
+@media (max-width: 600px) {
+    .input-row {
+        margin-left: 10% !important;
+        margin-right: 10% !important;
+    }
+}
+
+@media (max-width: 350px) {
+    .input-row {
+        margin-left: 3% !important;
+        margin-right: 3% !important;
+    }
 }
