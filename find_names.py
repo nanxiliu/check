@@ -48,6 +48,12 @@ def find_names(text):
                 final.append(name)
                 x+=2
 
-    print(final)
+    new_string = ",".join(final)
+    x = open("nameinput.txt","w")
+    x.write(new_string)
+    x.close()
+    return x
+
+
 
         

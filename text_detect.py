@@ -1,5 +1,6 @@
 import io
 import os
+from find_names import find_names
 
 def detect_document(path):
     """Detects document features in an image."""
@@ -38,3 +39,4 @@ def detect_document(path):
 
 
 detect_document('/Users/lillianbu/Documents/Cal_hacks/check/sampleBallot.png')
+names = find_names('ballot_text.txt')
