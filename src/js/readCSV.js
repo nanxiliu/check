@@ -17,10 +17,11 @@ function processData(csv) {
 
     for(var i=1;i<lines.length;i++){
         var obj = {};
-        var currentline=lines[i].split(",");
-
+        var currentline=lines[i].replace(/,/,'&').split('&');
+        console.log(currentline)
+        
         for(var j=0;j<headers.length;j++){
-            obj[headers[j].replace("\r", "")] = currentline[j];
+            obj[headers[j].replace("\r", "")] = currentline[j].replace(/['"]+/g, '');
         }
         result.push(obj);
     }

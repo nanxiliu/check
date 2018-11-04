@@ -33,7 +33,7 @@ h1, h2, h3, .navbar ul {
     display: block;
     color: white;
     text-align: center;
-    padding: 14px 16px;
+    padding: 16px 10px 12px 12px;
     text-decoration: none;
 }
 
@@ -85,9 +85,9 @@ li a:hover:not(.active) {
     display: block;
 }
 
-#sample-ballot {
+/* #sample-ballot {
     cursor: pointer;
-}
+} */
 
 /* Button coloring */
 
