@@ -57,16 +57,16 @@ li a:hover:not(.active) {
 
 .btn {
     background: var(--main-color);
-    border: 2px solid #111;
     font-size: 18px;
     color: #FFF;
     padding: 12px 22px;
 }
 
-
 /* Image upload CSS: https://bootsnipp.com/snippets/eNbOa */
 .btn-file {
     position: relative;
+    background: var(--main-color) !important;
+    color: #FFF !important;
     overflow: hidden;
 }
 .btn-file input[type=file] {
@@ -85,6 +85,23 @@ li a:hover:not(.active) {
     display: block;
 }
 
-#img-upload, #A {
+#img-upload, #sample-ballot {
     cursor: pointer;
 }
+
+#submit-btn {
+    border: 1px solid #111 !important;
+}
+
+#submit-btn > a {
+    color: #FFF !important;
+}
+
+#submit-btn:hover {
+    background: #00b0f0bd;
+}
+
+#submit-btn:hover > a {
+    text-decoration: none !important;
+}
+

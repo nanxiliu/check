@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 
+<script src="storage.js"></script>
+
 <head>
     <title>Check</title>
     <meta charset="utf-8">
@@ -24,18 +26,11 @@
     </nav>
 
     <div class="body-wrap container text-center">
-        <div class="row">
-            <div class="col-sm-6">
-                <img id="sample-ballot" src="../sampleBallot.png" class="img-responsive">
-            </div>
-            <div id="results-col" class="col-sm-6">
-                <h3>Results:</h3>
-            </div>
-        </div>
+        <button type="button" id="submit-btn" class="btn center-block" onclick="uploadFile('cal_ballots','hint10.JPG')"><a href="results.html">Submit</a></button>
         <br></br>
     </div>
     <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="./js/readCSV.js"></script>
+    <script src="./js/uiPath.js"></script>
     </body>
 </html>

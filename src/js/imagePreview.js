@@ -35,15 +35,6 @@ function main() {
         $("#imgInp").change(function(){
             readURL(this);
         }); 
-        
-        // Click and alert: http://jsfiddle.net/AMsK9/
-        $(document).ready(function (e) {
-            $('#img-upload').click(function (e) { //Offset mouse Position
-                var posX = $(this).offset().left,
-                    posY = $(this).offset().top;
-                alert((e.pageX - posX) + ' , ' + (e.pageY - posY));
-            })
-        });
     });
 };
 

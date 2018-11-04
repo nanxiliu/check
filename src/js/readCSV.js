@@ -10,10 +10,14 @@ function main() {
 }; 
 
 function processData(allText) {
-    var allTextLines = allText.split(/\r\n|\n/);
+    let allTextLines = allText.split(/\r\n|\n/);
+    allTextLines.attr("result-text");
+    console.log(typeof allTextLines)
+    let resultText = $('result-text').text().slice(22);
+    
     let resultsDiv = document.querySelector("#results-col");
     let point1 = document.createElement("p");
-    let text = document.createTextNode(allTextLines);
+    let text = document.createTextNode(resultText);
     point1.append(text);
     resultsDiv.append(point1);
 };
